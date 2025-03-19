@@ -22,6 +22,7 @@ namespace Krakout_11B {
     public partial class MainWindow : Window {
         double xSeb = 5;
         double ySeb = 5;
+        double alapSeb = 5;
         int pontszam = 0;
         public MainWindow() {
             InitializeComponent();
@@ -44,14 +45,16 @@ namespace Krakout_11B {
             var labdaX = Canvas.GetLeft(labda);
             var labdaY = Canvas.GetTop(labda);
             // nézzük a képernyő határait
-            if (labdaX > 950) xSeb = -5;
-            if (labdaX < 0) xSeb = 5;
+            if (labdaX < 0 || labdaX > 950) xSeb *= -1;
             if (labdaY > 550) {
                 // ha a labda eléri a képernyő alját, vonjon le egy pontot
-                ySeb = -5;
-                lbPontszam.Content = --pontszam;
+                pontszam = 0;
+                lbPontszam.Content = 0;
+                Canvas.SetTop(labda, 0);
+                labdaY = 0;
+                ySeb = alapSeb;
             }
-            if (labdaY < 0) ySeb = 5;
+            if (labdaY < 0) ySeb *= -1;
 
             // ütközésvizsgálat a labda és a játékos között
             var jatekosX = Canvas.GetLeft(jatekos);
@@ -61,7 +64,7 @@ namespace Krakout_11B {
                 && labdaY + labda.Height > jatekosY
                 && labdaY < jatekosY + jatekos.Height
                 ) {
-                ySeb = -5;
+                ySeb *= -1.3;
                 lbPontszam.Content = ++pontszam;
             }
             // a labda mozgatása
