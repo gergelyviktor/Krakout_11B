@@ -26,17 +26,28 @@ namespace Krakout_11B {
         int pontszam = 0;
         public MainWindow() {
             InitializeComponent();
-            //labda.CacheMode = new BitmapCache();
-            //// Sync rendering with frame refresh rate
-            //CompositionTarget.Rendering += mozgatas;
-            //// Lock the animation frame rate to 60 FPS
-            //Timeline.DesiredFrameRateProperty.OverrideMetadata(typeof(Timeline),
-            //    new FrameworkPropertyMetadata { DefaultValue = 60 });
 
-            var ido = new DispatcherTimer();
-            ido.Interval = TimeSpan.FromMilliseconds(1);
-            ido.Tick += mozgatas;
-            ido.Start();
+            Cursor = Cursors.None;
+
+
+            var tegla = new Image();
+            tegla.Source = new BitmapImage(new Uri("tegla.jpg", UriKind.Relative));
+            tegla.Width = 90;
+            tegla.Height = 20;
+            tegla.Stretch = Stretch.Fill;
+            jatekter.Children.Add(tegla);
+
+
+            labda.CacheMode = new BitmapCache();
+            //// Sync rendering with frame refresh rate
+            CompositionTarget.Rendering += mozgatas;
+            //// Lock the animation frame rate to 60 FPS
+            Timeline.DesiredFrameRateProperty.OverrideMetadata(typeof(Timeline), new FrameworkPropertyMetadata { DefaultValue = 60 });
+
+            //var ido = new DispatcherTimer();
+            //ido.Interval = TimeSpan.FromMilliseconds(1);
+            //ido.Tick += mozgatas;
+            //ido.Start();
         }
 
         private void mozgatas(object sender, EventArgs e) {
