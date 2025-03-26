@@ -6,9 +6,15 @@
         xmlns:local="clr-namespace:Krakout_11B"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+            <GradientStop Color="#FFAAAAAA" Offset="0.1"/>
+            <GradientStop Color="#FFFFFFFF" Offset="0.9"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid>
         <Canvas x:Name="jatekter">
-            <Label x:Name="lbPontszam" Content="0" Canvas.Left="27" Canvas.Top="33"/>
+            <Label x:Name="lbPontszam" Content="0" Canvas.Left="25" Canvas.Top="185"/>
             <Ellipse x:Name="labda" Height="30" Fill="Blue" Canvas.Left="509" Stroke="Black" Canvas.Top="173" Width="30"/>
             <Rectangle x:Name="jatekos" Height="20" Fill="Brown" Canvas.Left="456" Stroke="Black" Canvas.Top="545" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         </Canvas>
